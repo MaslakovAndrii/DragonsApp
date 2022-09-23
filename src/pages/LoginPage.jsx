@@ -1,9 +1,10 @@
 import React from 'react';
+import Authorization from '../components/Authorization/Authorization'
 
 const LoginPage = () => {
      return (
           <div>
-               Auth
+               <Authorization/>
           </div>
      );
 };
