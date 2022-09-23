@@ -9,6 +9,8 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import Layout from './components/Layout/Layout';
+import DragonsList from './components/DragonsList/DragonsList';
+import DragonItem from './components/DragonItem/DragonItem';
 
 function App() {
      return (
