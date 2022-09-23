@@ -25,11 +25,6 @@ const Registration = () => {
           const auth = getAuth();
           createUserWithEmailAndPassword(auth, data.email, data.password)
                .then(({ user }) => {
-                    dispatch(setUser({
-                         email: user.email,
-                         id: user.uid,
-                         token: user.accessToken
-                    }))
                     navigate(`${AUTHORIZATION_ROUTE}`)
                     reset()
                })
