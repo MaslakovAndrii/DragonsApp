@@ -4,7 +4,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE, REGISTRATION_ROUTE, START_ROUTE, LIST_ROUTE } from './utils/const';
 import './firebase';
 
-import './App.css';
+import './App.scss';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';

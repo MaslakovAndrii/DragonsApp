@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Carousel from '../components/Carousel/Carousel';
 
 const HomePage = () => {
      const [info, setInfo] = useState()
@@ -28,14 +29,14 @@ const HomePage = () => {
                <div>{info.height_w_trunk.meters}</div>
                <div>{info.first_flight}</div>
                <a href={info.wikipedia} target="blank">Прочитать в википедии</a>
-               <ul>
+               {/* <ul>
                     {info.flickr_images.map((url, index) => (
                          <li key={index}>
                               <img src={`${url}`} alt='photo' />
                          </li>
                     ))}
-               </ul>
-
+               </ul> */}
+               <Carousel data={info.flickr_images}/>
           </>
      );
 };
