@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './carousel.scss'
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
+import { useResize } from '../../hooks/useResize';
 
 const Carousel = ({ data, size}) => {
      const [offset, setOffset] = useState(0)
+     const carouselRef = useRef(null)
+     const resize = useResize(carouselRef)
 
      const handlerLeft = () => {
           setOffset((currentOffset) => {
-               const newOffset = currentOffset + size.width
+               const newOffset = currentOffset + resize.width
                return Math.min(newOffset, 0)
           })
      }
      
 
      const handlerRight = () => {
-
-          const maxOffset = -(size.width * (data.length - 1))
-
+          const maxOffset = -(resize.width * (data.length - 1))
+          
           setOffset((currentOffset) => {
-               const newOffset = currentOffset - size.width
+               const newOffset = currentOffset - resize.width
                return Math.max(newOffset, maxOffset)
           })
      }
 
      return (
           <div className='carousel'
+               ref={carouselRef}
                style={{
-                    width: size.width,
+                    maxWidth: size.width,
                     height: size.height,
                }}>
                <div className='carousel__window'>
