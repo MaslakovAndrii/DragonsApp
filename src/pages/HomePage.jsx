@@ -29,14 +29,8 @@ const HomePage = () => {
                <div>{info.height_w_trunk.meters}</div>
                <div>{info.first_flight}</div>
                <a href={info.wikipedia} target="blank">Прочитать в википедии</a>
-               {/* <ul>
-                    {info.flickr_images.map((url, index) => (
-                         <li key={index}>
-                              <img src={`${url}`} alt='photo' />
-                         </li>
-                    ))}
-               </ul> */}
-               <Carousel data={info.flickr_images}/>
+               
+               <Carousel data={info.flickr_images} size={{width: 600, height: 200}}/>
           </>
      );
 };
