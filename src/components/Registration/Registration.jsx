@@ -1,15 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from '../../store/slices/userSlice';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE, START_ROUTE } from '../../utils/const';
 import { useAuth } from '../../hooks/useAuth';
 
 const Registration = () => {
      const navigate = useNavigate()
-     const dispatch = useDispatch()
      const { isAuth } = useAuth()
 
      const { register, handleSubmit, reset } = useForm({

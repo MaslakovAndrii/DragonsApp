@@ -40,7 +40,7 @@ const Carousel = ({ data, size}) => {
                     >
                          {data.map((url, index) => (
                               <div className='carousel__item item-carousel' key={index}>
-                                        <img src={`${url}`} alt='photo'/>
+                                        <img src={`${url}`} alt='dragon-1'/>
                               </div>
                          ))}
                     </div>
