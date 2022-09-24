@@ -30,7 +30,7 @@ const HomePage = () => {
                <div>{info.first_flight}</div>
                <a href={info.wikipedia} target="blank">Прочитать в википедии</a>
                
-               <Carousel data={info.flickr_images} size={{width: 600, height: 200}}/>
+               <Carousel data={info.flickr_images} height={300}/>
           </>
      );
 };
