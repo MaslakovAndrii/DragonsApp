@@ -3,7 +3,7 @@ import './carousel.scss'
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 import { useResize } from '../../hooks/useResize';
 
-const Carousel = ({ data, size}) => {
+const Carousel = ({ data, size }) => {
      const [offset, setOffset] = useState(0)
      const carouselRef = useRef(null)
      const resize = useResize(carouselRef)
@@ -14,11 +14,10 @@ const Carousel = ({ data, size}) => {
                return Math.min(newOffset, 0)
           })
      }
-     
 
      const handlerRight = () => {
           const maxOffset = -(resize.width * (data.length - 1))
-          
+
           setOffset((currentOffset) => {
                const newOffset = currentOffset - resize.width
                return Math.max(newOffset, maxOffset)
@@ -39,14 +38,15 @@ const Carousel = ({ data, size}) => {
                          }}
                     >
                          {data.map((url, index) => (
-                              <div className='carousel__item item-carousel' key={index}>
-                                        <img src={`${url}`} alt='dragon-1'/>
+                              <div className='carousel__item item-carousel'
+                                   key={index}>
+                                   <img src={`${url}`} alt='dragon-1' />
                               </div>
                          ))}
                     </div>
                </div>
-               <IoIosArrowDropleftCircle className='arrow arrow_left' onClick={handlerLeft}/>
-               <IoIosArrowDroprightCircle className='arrow arrow_right' onClick={handlerRight}/>
+               <IoIosArrowDropleftCircle className='arrow arrow_left' onClick={handlerLeft} />
+               <IoIosArrowDroprightCircle className='arrow arrow_right' onClick={handlerRight} />
           </div>
      );
 };
