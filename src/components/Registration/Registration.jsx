@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -9,19 +9,21 @@ const Registration = () => {
      const navigate = useNavigate()
      const { isAuth } = useAuth()
 
-     const { register, handleSubmit, reset, formState: { errors } } = useForm({
+     const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
           defaultValues: {
                name: '',
                email: '',
                password: '',
           },
+          mode: 'onChange',
      })
+     
 
      const onSubmit = (data, e) => {
           e.preventDefault()
           const auth = getAuth();
           createUserWithEmailAndPassword(auth, data.email, data.password)
-               .then(({ user }) => {
+               .then(() => {
                     navigate(`${AUTHORIZATION_ROUTE}`)
                     reset()
                })
@@ -29,6 +31,8 @@ const Registration = () => {
                     console.log(error);
                });
      }
+
+
      const onError = (errors, e) => {
           console.log('error');
      }
@@ -51,7 +55,7 @@ const Registration = () => {
                               {...register('email',
                                    {
                                         required: true,
-                                        pattern: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+                                        pattern: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
                                    }
                               )}
                               placeholder='Введите email' />
@@ -61,12 +65,12 @@ const Registration = () => {
                               {...register('password',
                                    {
                                         required: true,
-                                        minLength: 6
+                                        minLength: 6,
                                    }
                               )}
                               placeholder='Введите пароль' />
                          {errors?.password && <div className='form-error'>{errors.password.message}</div>}
-                         <button type='submit'>Зарегистрироваться</button>
+                         <button type='submit' disabled={!isValid} >Зарегистрироваться</button>
                     </form>
                </>
 
