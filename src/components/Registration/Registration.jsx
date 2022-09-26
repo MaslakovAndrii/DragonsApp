@@ -5,6 +5,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE, START_ROUTE } from '../../utils/const';
 import { useAuth } from '../../hooks/useAuth';
 
+import './Registration'
+
 const Registration = () => {
      const navigate = useNavigate()
      const { isAuth } = useAuth()
@@ -17,7 +19,7 @@ const Registration = () => {
           },
           mode: 'onChange',
      })
-     
+
 
      const onSubmit = (data, e) => {
           e.preventDefault()
@@ -40,37 +42,52 @@ const Registration = () => {
           ? <Navigate to={START_ROUTE} />
           : (
                <>
-                    <h1>Зарегистрироваться</h1>
-                    <form onSubmit={handleSubmit(onSubmit, onError)}>
-                         <input
-                              type='text'
-                              {...register('name',
-                                   { required: true }
-                              )}
 
-                              placeholder='Имя' />
-                         {errors?.name && <div className='form-error'>{errors.name.message}</div>}
-                         <input
-                              type='email'
-                              {...register('email',
-                                   {
-                                        required: true,
-                                        pattern: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-                                   }
-                              )}
-                              placeholder='Введите email' />
-                         {errors?.email && <div className='form-error'>{errors.email.message}</div>}
-                         <input
-                              type='password'
-                              {...register('password',
-                                   {
-                                        required: true,
-                                        minLength: 6,
-                                   }
-                              )}
-                              placeholder='Введите пароль' />
-                         {errors?.password && <div className='form-error'>{errors.password.message}</div>}
-                         <button type='submit' disabled={!isValid} >Зарегистрироваться</button>
+                    <form className='form' onSubmit={handleSubmit(onSubmit, onError)}>
+                         <div className='form__input-wrapper'>
+                              <input
+                                   className='form__input'
+                                   type='text'
+                                   {...register('name',
+                                        { required: 'Обязательное поле' }
+                                   )}
+
+                                   placeholder='Имя' />
+                              {errors?.name && <div className='form__error'>{errors.name.message}</div>}
+                         </div>
+                         <div className='form__input-wrapper'>
+                              <input
+                                   className='form__input'
+                                   type='email'
+                                   {...register('email',
+                                        {
+                                             required: 'Обязательное поле',
+                                             pattern: {
+                                                  value: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                                                  message: 'Введите правильный email'
+                                             }
+                                        }
+                                   )}
+                                   placeholder='Введите email' />
+                              {errors?.email && <div className='form__error'>{errors.email.message}</div>}
+                         </div>
+                         <div className='form__input-wrapper'>
+                              <input
+                                   className='form__input'
+                                   type='password'
+                                   {...register('password',
+                                        {
+                                             required: 'Обязательное поле',
+                                             minLength: {
+                                                  value: 6,
+                                                  message: 'Пароль должен быть не менее 6 символов'
+                                             },
+                                        }
+                                   )}
+                                   placeholder='Введите пароль' />
+                              {errors?.password && <div className='form__error'>{errors.password.message}</div>}
+                         </div>
+                         <button className='form__btn btn' type='submit' disabled={!isValid} >Зарегистрироваться</button>
                     </form>
                </>
 

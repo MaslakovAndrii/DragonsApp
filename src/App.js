@@ -5,9 +5,9 @@ import { AUTHORIZATION_ROUTE, REGISTRATION_ROUTE, START_ROUTE, LIST_ROUTE } from
 import './firebase';
 
 import './App.scss';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegistrationPage from './pages/RegistrationPage';
+import HomePage from './pages/HomePage/HomePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import Layout from './components/Layout/Layout';
 import DragonsList from './components/DragonsList/DragonsList';
 import DragonItem from './components/DragonItem/DragonItem';

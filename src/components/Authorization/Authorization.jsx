@@ -47,31 +47,42 @@ const Authorization = () => {
           ? <Navigate to={START_ROUTE} />
           : (
                <>
-                    <h1>Войти</h1>
-                    <form noValidate onSubmit={handleSubmit(onSubmit, onError)}>
-                         <input
-                              type='email'
-                              {...register('email',
-                                   {
-                                        required: true,
-                                        pattern: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
-                                   }
-                              )}
-                              placeholder='Введите email' />
-                         {errors?.email && <div className='form-error'>{errors.email.message}</div>}
-                         <input
-                              type='password'
-                              {...register('password',
-                                   {
-                                        required: true,
-                                        minLength: 6
-                                   }
-                              )}
-                              placeholder='Введите пароль' />
-                         {errors?.password && <div className='form-error'>{errors.password.message}</div>}
-                         <button type='submit' disabled={!isValid}>Войти</button>
+
+                    <form className='form' noValidate onSubmit={handleSubmit(onSubmit, onError)} >
+                         <div className='form__input-wrapper'>
+                              <input
+                                   className='form__input'
+                                   type='email'
+                                   {...register('email',
+                                        {
+                                             required: 'Обязательное поле',
+                                             pattern: {
+                                                  value: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                                                  message: 'Введите правильный email'
+                                             }
+                                        }
+                                   )}
+                                   placeholder='Введите email' />
+                              {errors?.email && <div className='form__error'>{errors.email.message}</div>}
+                         </div>
+                         <div className='form__input-wrapper'>
+                              <input
+                                   className='form__input'
+                                   type='password'
+                                   {...register('password',
+                                        {
+                                             required: 'Обязательное поле',
+                                             minLength: {
+                                                  value: 6,
+                                                  message: 'Пароль должен быть не менее 6 символов'
+                                             }
+                                        }
+                                   )}
+                                   placeholder='Введите пароль' />
+                              {errors?.password && <div className='form__error'>{errors.password.message}</div>}
+                         </div>
+                         <button className='form__btn btn' type='submit' disabled={!isValid}>Войти</button>
                     </form>
-                    <Link to={REGISTRATION_ROUTE}>Зарегистрироваться</Link>
                </>
 
           );
