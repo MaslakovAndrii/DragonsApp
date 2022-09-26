@@ -13,7 +13,7 @@ const Authorization = () => {
      const navigate = useNavigate()
      const { isAuth } = useAuth()
 
-     const { register, handleSubmit, reset } = useForm({
+     const { register, handleSubmit, reset, formState: { errors } } = useForm({
           defaultValues: {
                email: '',
                password: '',
@@ -38,7 +38,7 @@ const Authorization = () => {
                });
      }
      const onError = (errors, e) => {
-
+          console.log('error');
      }
 
 
@@ -48,12 +48,24 @@ const Authorization = () => {
           : (
                <>
                     <h1>Войти</h1>
-                    <form onSubmit={handleSubmit(onSubmit, onError)}>
-                         <input type='email' {...register('email', { required: true })} placeholder='Введите email' />
-                         <input type='password' {...register('password', { required: true })} placeholder='Введите пароль' />
+                    <form noValidate onSubmit={handleSubmit(onSubmit, onError)}>
+                         <input
+                              type='email'
+                              {...register('email',
+                                   { required: true, pattern: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/ }
+                              )}
+                              placeholder='Введите email' />
+                         {errors?.email && <div className='form-error'>{errors.email.message}</div>}
+                         <input
+                              type='password'
+                              {...register('password',
+                                   { required: true, minLength: 6 }
+                              )}
+                              placeholder='Введите пароль' />
+                         {errors?.password && <div className='form-error'>{errors.password.message}</div>}
                          <button type='submit'>Войти</button>
                     </form>
-                    <Link to={REGISTRATION_ROUTE}>зарегистрироваться</Link>
+                    <Link to={REGISTRATION_ROUTE}>Зарегистрироваться</Link>
                </>
 
           );
