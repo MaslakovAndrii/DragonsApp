@@ -3,34 +3,34 @@ import React, { useEffect, useState } from 'react';
 import Carousel from '../components/Carousel/Carousel';
 
 const HomePage = () => {
-     const [info, setInfo] = useState()
+     const [cash, setCash] = useState(JSON.parse(localStorage.getItem('data')))
 
      useEffect(() => {
-          axios.get('https://api.spacexdata.com/v4/dragons/5e9d058759b1ff74a7ad5f8f')
+          axios.get('https://api.spacexdata.com/v4/dragons/5e9d058859b1ffd8e2ad5f90')
                .then(response => {
-                    console.log(response.data);
-                    setInfo(response.data)
+                    localStorage.setItem('data', JSON.stringify(response.data))
+                    setCash(response.data)
                })
                .catch(err => {
                     console.log(err);
                })
+
      }, [])
 
 
-
-     if (!info) {
+     if (!cash) {
           return <div>Загрузка...</div>
      }
 
      return (
           <>
-               <div>{info.name}</div>
-               <div>{info.description}</div>
-               <div>{info.height_w_trunk.meters}</div>
-               <div>{info.first_flight}</div>
-               <a href={info.wikipedia} target="blank">Прочитать в википедии</a>
-               
-               <Carousel data={info.flickr_images} height={300}/>
+               <div>{cash.name}</div>
+               <div>{cash.description}</div>
+               <div>{cash.height_w_trunk.meters}</div>
+               <div>{cash.first_flight}</div>
+               <a href={cash.wikipedia} target="blank">Прочитать в википедии</a>
+
+               <Carousel data={cash.flickr_images} height={300} />
           </>
      );
 };
