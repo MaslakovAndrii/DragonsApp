@@ -5,7 +5,7 @@ import './RegistrationPage.scss'
 
 const RegistrationPage = () => {
      return (
-          <Container>
+          <Container size='small'>
                <div className='reg'>
                     <h1 className='reg__title main-page-title'>Зарегистрироваться</h1>
                     <Registration />

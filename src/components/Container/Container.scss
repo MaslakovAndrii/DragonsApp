@@ -1,6 +1,14 @@
 .container {
-     max-width: 500px;
      height: 100%;
      margin: 0 auto;
      padding: 15px;
+     &_max {
+          max-width: 1200px;
+     }
+     &_mid {
+          max-width: 800px;
+     }
+     &_small {
+          max-width: 500px;
+     }
 }

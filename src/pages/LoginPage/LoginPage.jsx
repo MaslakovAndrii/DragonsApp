@@ -7,7 +7,7 @@ import './LoginPage.scss'
 
 const LoginPage = () => {
      return (
-          <Container>
+          <Container size='small'>
                <div className='auth'>
                     <h1 className='auth__title main-page-title'>Войти</h1>
                     <Authorization />

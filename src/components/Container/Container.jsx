@@ -1,9 +1,10 @@
 import React from 'react';
 import './Container.scss'
 
-const Container = ({children}) => {
+const Container = ({size, children }) => {
+     console.log(size);
      return (
-          <div className='container'>
+          <div className={`container container_${size}`}>
                {children}
           </div>
      );
