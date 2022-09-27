@@ -1,9 +1,10 @@
 .container {
+     color: #fff;
      display: flex;
      flex-direction: column;
      height: 100%;
      margin: 0 auto;
-     padding: 15px;
+     padding: 0 15px;
      &_max {
           max-width: 1200px;
      }
