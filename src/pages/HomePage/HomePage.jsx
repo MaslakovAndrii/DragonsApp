@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
+import { FiLoader } from 'react-icons/fi';
+import './HomePage.scss'
 
 const HomePage = () => {
      const [cash, setCash] = useState(JSON.parse(localStorage.getItem('data')))
 
      useEffect(() => {
-          axios.get('https://api.spacexdata.com/v4/dragons/5e9d058859b1ffd8e2ad5f90')
+          axios.get('https://api.spacexdata.com/v4/dragons/5e9d058759b1ff74a7ad5f8f')
                .then(response => {
                     localStorage.setItem('data', JSON.stringify(response.data))
                     setCash(response.data)
@@ -19,19 +21,23 @@ const HomePage = () => {
 
 
      if (!cash) {
-          return <div>Загрузка...</div>
+          return <FiLoader className='loader' />
      }
 
      return (
-          <>
-               <div>{cash.name}</div>
-               <div>{cash.description}</div>
-               <div>{cash.height_w_trunk.meters}</div>
-               <div>{cash.first_flight}</div>
-               <a href={cash.wikipedia} target="blank">Прочитать в википедии</a>
+          <main className='main main-page'>
+               <div className='main-page__content'>
+                    <h2 className='main-page__title'>{cash.name}</h2>
+                    <p className='main-page__text'>Первый полет: {cash.first_flight}</p>
+                    <p className='main-page__text'>Высота: {cash.height_w_trunk.meters} м</p>
+                    <p className='main-page__text'>{cash.description}</p>
+                    <a className='main-page__link link' href={cash.wikipedia} target="blank">Википедия</a>
+               </div>
+               <div className='main-page__carousel'>
+                    <Carousel data={cash.flickr_images} />
+               </div>
 
-               <Carousel data={cash.flickr_images} height={300} />
-          </>
+          </main>
      );
 };
 

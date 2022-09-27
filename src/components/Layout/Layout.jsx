@@ -10,8 +10,9 @@ const Layout = () => {
      const { isAuth } = useAuth()
 
      return isAuth
-          ? (<div style={{
-               height: '100vh',
+          ? (
+          <div style={{
+               minHeight: '100vh',
                backgroundImage: `url(${bgImage})`,
                backgroundPosition: 'center',
                backgroundSize: 'cover',
@@ -21,7 +22,8 @@ const Layout = () => {
                     <Header />
                     <Outlet />
                </Container>
-          </div>)
+          </div>
+          )
           : (
                <Navigate to={AUTHORIZATION_ROUTE} />
           )

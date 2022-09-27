@@ -4,7 +4,7 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons
 import { CarouselPage } from './CarouselPage/CarouselPage';
 import { CarouselContext } from './CarouselContecst';
 
-const Carousel = ({ data, height }) => {
+const Carousel = ({ data }) => {
      const [offset, setOffset] = useState(0)
      const [width, setWidth] = useState(450)
      const windowRef = useRef()
@@ -45,13 +45,9 @@ const Carousel = ({ data, height }) => {
           <CarouselContext.Provider
                value={{
                     width,
-                    height,
                }}>
                <div className='carousel'
                     ref={windowRef}
-                    style={{
-                         height: height,
-                    }}
                >
                     <div className='carousel__window'
                     >

@@ -17,6 +17,7 @@ const Header = () => {
      const handleMenuOpen = () => {
           if(!menuOpen) {
                setMenuOpen(true)
+               
           } else {
                setMenuOpen(false)
           }

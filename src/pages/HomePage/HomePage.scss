@@ -1,0 +1,41 @@
+.main-page {
+     color: black;
+     padding: 15px 0;
+     &__content {
+          border-radius: 5px;
+          padding: 15px;
+          background-color: rgba(252, 252, 252, 0.508);
+          flex: 0 1 auto;
+     }
+     &__carousel {
+          height: 500px;
+          margin-top: 15px;
+     }
+     &__title {
+
+     }
+     &__text {
+
+     }
+     &__link {
+          display: inline-block;
+          padding: 5px;
+          background-color: rgba(255, 255, 255, 0.513);
+     }
+     @media (max-width: 768px) {
+          flex-direction: column;
+          row-gap: 15px;
+          &__content {
+                flex-basis: 0;
+          }
+          &__carousel {
+               height: 250px;
+          }
+     }
+     // @media (max-width: 425px) {
+     //      &__carousel {
+     //           height: 100px;
+     //      }
+     // }
+}
+
