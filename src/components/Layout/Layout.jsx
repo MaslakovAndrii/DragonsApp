@@ -11,18 +11,17 @@ const Layout = () => {
 
      return isAuth
           ? (
-          <div style={{
-               minHeight: '100vh',
-               backgroundImage: `url(${bgImage})`,
-               backgroundPosition: 'center',
-               backgroundSize: 'cover',
-               backgroundRepeat: 'no-repeat',
-          }}>
-               <Container size='max'>
-                    <Header />
-                    <Outlet />
-               </Container>
-          </div>
+               <div style={{
+                    minHeight: '100vh',
+                    backgroundRepeat: 'no-repeat',
+                    background: 'rgb(58,180,161)',
+                    background: 'linear-gradient(129deg, rgba(58,180,161,1) 0%, rgba(83,29,253,1) 50%, rgba(252,69,69,0.5730085784313726) 100%)'
+               }}>
+                    <Container size='max'>
+                         <Header />
+                         <Outlet />
+                    </Container>
+               </div>
           )
           : (
                <Navigate to={AUTHORIZATION_ROUTE} />
