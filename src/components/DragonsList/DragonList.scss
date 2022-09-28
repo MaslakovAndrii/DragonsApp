@@ -1,0 +1,40 @@
+.content {
+     color: black;
+     padding: 15px;
+     background-color: rgba(252, 252, 252, 0.508);     
+}
+
+.dragon-list {
+     display: flex;
+     flex-direction: column;
+     row-gap: 15px;
+     &__link {
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          column-gap: 15px;
+          row-gap: 5px;
+          &:not(:last-child) {
+               border-bottom: 2px solid gray;
+          }
+     }
+     &__title {
+          position: relative;
+          width: 150px;
+          padding-top: 50%;
+          overflow: hidden;
+     }
+     &__img {
+          object-fit: contain;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+     }
+     &__description {
+
+     }
+}
