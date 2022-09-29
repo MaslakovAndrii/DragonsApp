@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
-import { FiLoader } from 'react-icons/fi';
 import './HomePage.scss'
+import Loader from '../../components/Loader/Loader';
 
 const HomePage = () => {
      const [cash, setCash] = useState(JSON.parse(localStorage.getItem('data')))
+
+     //  TODO: создать сервис для астинхронных запросов
 
      useEffect(() => {
           axios.get('https://api.spacexdata.com/v4/dragons/5e9d058759b1ff74a7ad5f8f')
@@ -16,12 +18,11 @@ const HomePage = () => {
                .catch(err => {
                     console.log(err);
                })
-
      }, [])
 
 
      if (!cash) {
-          return <FiLoader className='loader' />
+          return <Loader/>
      }
 
      return (
