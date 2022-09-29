@@ -28,7 +28,7 @@ const Profile = () => {
                </div>
                <div className={`profile__bottom ${visibleBottom ? 'profile__bottom_visible' : null}`}>
                     <ul className='profile__list list-profile'>
-                         <li className='list-profile__item'>Profile</li>
+                         <li className='list-profile__item link'>Profile</li>
                          <li className='list-profile__item'>
                               <Link className='list-profile__link link' to={FAVORITE_ROUTE}>Favorite</Link>
                          </li>

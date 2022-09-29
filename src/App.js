@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import store from './store';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import { AUTHORIZATION_ROUTE, REGISTRATION_ROUTE, START_ROUTE, LIST_ROUTE } from './utils/const';
+import { AUTHORIZATION_ROUTE, REGISTRATION_ROUTE, START_ROUTE, LIST_ROUTE, FAVORITE_ROUTE } from './utils/const';
 import './firebase';
 
 import './App.scss';
@@ -23,6 +23,7 @@ function App() {
                               <Route index element={<HomePage />} />
                               <Route path={LIST_ROUTE} element={<DragonsList />} />
                               <Route path={`${LIST_ROUTE}/:id`} element={<DragonItem />} />
+                              <Route path={`${FAVORITE_ROUTE}`} element={<HomePage />} />
                               <Route path='*' element={<div>страница не найдена</div>} />
                          </Route>
                     </Routes>

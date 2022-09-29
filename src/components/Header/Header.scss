@@ -21,18 +21,19 @@
           display: flex;
           
      }
-     &__logout {
-
-     }
      &__burger {
           height: 30px;
           width: 30px;
           color: #01579b;
           display: none;
      }
+     &__container-profile {
+          
+     }
      @media (max-width: 768px) {
           justify-content: space-between;
           &__body {
+               min-width: 200px;
                background-color: #fff;
                position: fixed;
                padding: 70px 15px 0 15px;
@@ -50,6 +51,10 @@
           }
           &__menu {
                flex: none;
+               order: 2;
+          }
+          &__container-profile {
+               order: 1;
           }
           &__burger {
                display: block;
