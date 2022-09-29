@@ -1,0 +1,24 @@
+.pagination {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     &__container {
+          max-width: 400px;
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 3px;
+     }
+     &__page {
+          padding: 5px;
+          line-height: 100%;
+          background-color: #fff;
+          color: black;
+          border-radius: 5px;
+          &:hover {
+               background-color: rgba(171, 171, 171, 0.747);
+          }
+          &.page-active {
+               background-color: #4c90c5;
+          }
+     }
+}
