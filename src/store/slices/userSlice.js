@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-     email: true,
-     token: null,
-     id: null,
-};
 
 const userSlice = createSlice({
      name: 'user',
-     initialState,
+     initialState: {
+          email: true,
+          token: null,
+          id: null,
+     },
      reducers: {
           setUser(state, action) {
                state.email = action.payload.email;
@@ -23,6 +22,6 @@ const userSlice = createSlice({
      }
 });
 
-export const { setUser, removeUser} = userSlice.actions;
+export const { setUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
