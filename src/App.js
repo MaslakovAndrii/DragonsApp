@@ -11,6 +11,7 @@ import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import Layout from './components/Layout/Layout';
 import DragonsList from './components/DragonsList/DragonsList';
 import DragonItem from './components/DragonItem/DragonItem';
+import Favorite from './components/Favorite/Favorite';
 
 function App() {
      return (
@@ -23,7 +24,7 @@ function App() {
                               <Route index element={<HomePage />} />
                               <Route path={LIST_ROUTE} element={<DragonsList />} />
                               <Route path={`${LIST_ROUTE}/:id`} element={<DragonItem />} />
-                              <Route path={`${FAVORITE_ROUTE}`} element={<HomePage />} />
+                              <Route path={`${FAVORITE_ROUTE}`} element={<Favorite />} />
                               <Route path='*' element={<div>страница не найдена</div>} />
                          </Route>
                     </Routes>

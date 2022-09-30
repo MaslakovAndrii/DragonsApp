@@ -9,7 +9,6 @@ const CardDragon = ({ id, image, name, description }) => {
      const dispatch = useDispatch()
 
      const addToFavorites = () => {
-          // console.log(id);
           dispatch(setFavorite(id))
      }
 
