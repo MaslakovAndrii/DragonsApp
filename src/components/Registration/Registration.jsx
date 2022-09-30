@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE, START_ROUTE } from '../../utils/const';
 import { useAuth } from '../../hooks/useAuth';
@@ -29,12 +29,15 @@ const Registration = () => {
           const auth = getAuth();
           createUserWithEmailAndPassword(auth, data.email, data.password)
                .then(() => {
-                    setNotification({type: 'successful', message: 'Регистрация успешна, проверьте свою почту, чтобы продолжить!'})
+                    updateProfile(auth.currentUser, {
+                         displayName: data.name
+                    })
+                    // setNotification({type: 'successful', message: 'Регистрация успешна, проверьте свою почту, чтобы продолжить!'})
                     reset()
-                    // navigate(`${AUTHORIZATION_ROUTE}`)
+                    navigate(`${AUTHORIZATION_ROUTE}`)
                })
-               .catch((error) => {
-                    setNotification({type: 'error', message: 'Ошибка! Пользователь с таким email уже существует.'})
+               .catch(() => {
+                    setNotification({ type: 'error', message: 'Ошибка! Пользователь с таким email уже существует.' })
                });
      }
 
@@ -42,7 +45,7 @@ const Registration = () => {
           ? <Navigate to={START_ROUTE} />
           : (
                <>
-                    {notification ? <Notification type={notification.type} message={notification.message} handleVisible={setNotification}/> : null}
+                    {notification ? <Notification type={notification.type} message={notification.message} handleVisible={setNotification} /> : null}
 
                     <form className='form' onSubmit={handleSubmit(onSubmit)}>
                          <div className='form__input-wrapper'>
