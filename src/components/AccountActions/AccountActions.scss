@@ -55,6 +55,7 @@
 }
 
 .list-profile {
+     color: #01579b;
      display: flex;
      flex-direction: column;
      &__item {
@@ -64,5 +65,8 @@
           &:hover {
                background-color: rgba(177, 177, 177, 0.56);
           }
+     }
+     &__btn {
+          
      }
 }
