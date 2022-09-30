@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -6,9 +6,11 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { REGISTRATION_ROUTE, START_ROUTE } from '../../utils/const';
 import { setUser } from '../../store/slices/userSlice';
 import { useAuth } from '../../hooks/useAuth';
+import Notification from '../../components/Notification/Notification';
 
 
 const Authorization = () => {
+     const [notification, setNotification] = useState(false)
      const dispatch = useDispatch()
      const navigate = useNavigate()
      const { isAuth } = useAuth()
@@ -34,7 +36,7 @@ const Authorization = () => {
                     reset()
                })
                .catch((error) => {
-                    console.log(error);
+                    setNotification({ type: 'error', message: 'Неправильный email или пароль. Попробуйте снова!' })
                });
      }
      const onError = (errors, e) => {
@@ -47,6 +49,7 @@ const Authorization = () => {
           ? <Navigate to={START_ROUTE} />
           : (
                <>
+                    {notification ? <Notification type={notification.type} message={notification.message} handleVisible={setNotification} /> : null}
 
                     <form className='form' noValidate onSubmit={handleSubmit(onSubmit, onError)} >
                          <div className='form__input-wrapper'>
