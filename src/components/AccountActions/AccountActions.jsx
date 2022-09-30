@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import { removeUser } from '../../store/slices/userSlice';
 import { FAVORITE_ROUTE } from '../../utils/const';
 import Modal from '../Modal/Modal'
+import Profile from '../Profile/Profile';
 import './AccountActions.scss'
 
-const Profile = () => {
+const AccountActions = () => {
      const [visibleBottom, setVisibleBottom] = useState(false)
      const [modalActive, setModalActive] = useState(false)
      const dispatch = useDispatch()
@@ -37,9 +38,11 @@ const Profile = () => {
                     </ul>
                     <button className='header__logout logout btn' onClick={() => dispatch(removeUser())}>Выйти</button>
                </div>
-               <Modal active={modalActive} setActive={setModalActive}>hello</Modal>
+               <Modal active={modalActive} setActive={setModalActive}>
+                    <Profile/>
+               </Modal>
           </div>
      );
 };
 
-export default Profile;
+export default AccountActions;

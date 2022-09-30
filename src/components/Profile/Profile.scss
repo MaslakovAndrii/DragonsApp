@@ -1,0 +1,36 @@
+.profile {
+     &__area-name {
+     }
+}
+
+.area-name {
+     display: flex;
+     align-items: center;
+     column-gap: 15px;
+     &__name {
+          font-size: 28px;
+     }
+     &__form {
+          display: flex;
+          align-items: center;
+          column-gap: 15px;
+     }
+     &__input {
+     }
+     &__btn {
+          padding: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgb(142, 188, 142);
+          border-radius: 5px;
+          &_edit {
+          }
+          &_done {
+          }
+     }
+     &__icon {
+          width: 25px;
+          height: 25px;
+     }
+}
