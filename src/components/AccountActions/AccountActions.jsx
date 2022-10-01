@@ -31,7 +31,7 @@ const AccountActions = () => {
                          <VscAccount className='profile__account-icon account-icon' />
                     </button>
                </div>
-               <div className={`profile__bottom ${visibleBottom ? 'profile__bottom_visible' : null}`}>
+               <div className={`profile__bottom ${visibleBottom ? 'profile__bottom_visible' : ''}`}>
                     <ul className='profile__list list-profile'>
                          <li className='list-profile__item'><button onClick={() => setModalActive(true)} className='list-profile__btn btn_null'>Profile</button></li>
                          <li className='list-profile__item'>

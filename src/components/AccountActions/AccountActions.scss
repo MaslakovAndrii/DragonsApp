@@ -35,6 +35,7 @@
      }
 
      &__btn {
+          padding: 0;
           width: 30px;
           height: 30px;
      }
@@ -69,5 +70,8 @@
      }
      &__btn {
           width: 100%;
+          & svg {
+               width: 30px;
+          }
      }
 }
