@@ -24,7 +24,7 @@ const CardDragon = ({ data, typeButton }) => {
                Button = <InteractiveButton
                     id={data.id}
                     actionHandler={addToFavorites}
-                    textTooltip='qwertyu'
+                    textTooltip='Add to favorites'
                >
                     <FcLike className='card-dragon__like' />
                </InteractiveButton>
@@ -33,7 +33,7 @@ const CardDragon = ({ data, typeButton }) => {
                Button = <InteractiveButton
                     id={data.id}
                     actionHandler={removeFromFavorites}
-                    textTooltip='qwertyu'
+                    textTooltip='Remove from favorites'
                >
                     <AiOutlineClose className='card-dragon__like' />
                </InteractiveButton>
