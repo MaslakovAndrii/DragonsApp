@@ -1,0 +1,121 @@
+.dragon-item {
+     color: black;
+     &__inner {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          row-gap: 20px;
+          background-color: rgba(255, 255, 255, 0.413);
+     }
+     &__top {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+     }
+     &__other {
+          width: 100%;
+          padding: 0 15px;
+          margin: 0 -15px;
+          display: flex;
+     }
+     &__carousel {
+          padding: 0 15px;
+          max-width: 50%;
+          height: 400px;
+     }
+     &__info {
+          padding: 0 15px;
+          flex: 0 0 50%;
+          display: flex;
+          flex-direction: column;
+     }
+     @media (max-width: 620px) {
+          &__other {
+               flex-direction: column;
+               row-gap: 20px;
+          }
+          &__info {
+               order: 2;
+          }
+          &__carousel {
+               order: 1;
+               max-width: 100%;
+          }
+     }
+     @media (max-width: 425px) {
+          &__carousel {
+               height: 300px;
+          }
+     }
+}
+
+.info-dragon {
+
+     display: flex;
+     flex-direction: column;
+     row-gap: 20px;
+     max-height: 80vh;
+     overflow-y: scroll;
+     &__general {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          position: relative;
+     }
+     &__text {
+     }
+     &__link {
+     }
+     &__description {
+     }
+     &__details {
+     }
+     &__btn {
+          min-width: 100px;
+          position: absolute;
+          top: 0;
+          right: 0;
+     }
+}
+
+.details {
+     display: flex;
+     flex-direction: column;
+     // row-gap: 10px;
+     & > * {
+          padding: 5px 0;
+     }
+     & > :not(:last-child) {
+          border-bottom: 1px solid black;
+     }
+     &__trunk {
+     }
+     &__head-shields {
+     }
+     &__thrusters {
+     }
+     &__list {
+          flex-wrap: wrap;
+          display: flex;
+          column-gap: 15px;
+     }
+     &__item {
+          padding: 0 5px;
+     }
+     &__title {
+     }
+     &__text {
+     }
+}
+
+.list-thrusters {
+     &__item {
+          padding: 10px;
+          max-width: 200px;
+     }
+     &__text {
+     }
+}
+
+.text {
+}
