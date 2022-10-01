@@ -1,10 +1,9 @@
 import { Provider } from 'react-redux';
-import store from './store';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE, REGISTRATION_ROUTE, START_ROUTE, LIST_ROUTE, FAVORITE_ROUTE } from './utils/const';
 import './firebase';
+import store from './store';
 
-import './App.scss';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
@@ -12,6 +11,8 @@ import Layout from './components/Layout/Layout';
 import DragonsList from './components/DragonsList/DragonsList';
 import DragonItem from './components/DragonItem/DragonItem';
 import Favorite from './components/Favorite/Favorite';
+
+import './App.scss';
 
 function App() {
      return (

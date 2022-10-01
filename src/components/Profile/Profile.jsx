@@ -1,10 +1,10 @@
-
-import { getAuth } from 'firebase/auth';
 import React, { useState } from 'react';
+import { getAuth } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
+
+import './Profile.scss'
 import { GrEdit } from 'react-icons/gr'
 import { MdOutlineDone } from 'react-icons/md'
-import './Profile.scss'
 
 const Profile = () => {
      const auth = getAuth();

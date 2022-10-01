@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { REGISTRATION_ROUTE } from '../../utils/const';
+
 import Authorization from '../../components/Authorization/Authorization'
 import Container from '../../components/Container/Container';
-import { REGISTRATION_ROUTE } from '../../utils/const';
+
 import './LoginPage.scss'
 
 const LoginPage = () => {

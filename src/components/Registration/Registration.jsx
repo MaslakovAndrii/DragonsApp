@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE, START_ROUTE } from '../../utils/const';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useForm } from 'react-hook-form';
 import { useAuth } from '../../hooks/useAuth';
-import Notification from '../../components/Notification/Notification';
 
+import Notification from '../../components/Notification/Notification';
 
 import './Registration'
 
@@ -32,7 +32,6 @@ const Registration = () => {
                     updateProfile(auth.currentUser, {
                          displayName: data.name
                     })
-                    // setNotification({type: 'successful', message: 'Регистрация успешна, проверьте свою почту, чтобы продолжить!'})
                     reset()
                     navigate(`${AUTHORIZATION_ROUTE}`)
                })

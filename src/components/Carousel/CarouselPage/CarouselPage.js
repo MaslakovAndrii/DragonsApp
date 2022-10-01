@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { CarouselContext } from '../CarouselContecst'
+import { CarouselContext } from '../CarouselContext'
+
 import './CarouselPage'
 
 

@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FcLike } from 'react-icons/fc'
-import { AiOutlineClose } from 'react-icons/ai'
-import './CardDragon.scss'
 import { useDispatch } from 'react-redux';
 import { removeFavorite, setFavorite } from '../../store/slices/favoriteSlice';
+import { Link } from 'react-router-dom';
+
 import InteractiveButton from '../InteractiveButton/InteractiveButton';
+
+import './CardDragon.scss'
+import { AiOutlineClose } from 'react-icons/ai'
+import { FcLike } from 'react-icons/fc'
 
 const CardDragon = ({ data, typeButton }) => {
      const dispatch = useDispatch()

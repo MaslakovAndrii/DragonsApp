@@ -2,16 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import CardDragon from '../CardDragon/CardDragon';
-import Pagination from '../Pagination/Pagination';
 import './Favorite.scss'
 
 const Favorite = () => {
      const [data, setData] = useState([])
-     // const [page, setPage] = useState(1)
-
-     // const handlePage = (countPage) => {
-     //      setPage(data.page)
-     // }
 
      const favorites = useSelector(state => state.favorite)
 
@@ -43,7 +37,6 @@ const Favorite = () => {
                               ))}
                          </ul>
                     </div>
-                    {/* <Pagination pages={data?.totalPages} handlePage={handlePage} pageActive={data?.page} /> */}
                </div>
           </div>
      );

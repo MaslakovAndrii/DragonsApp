@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { CarouselPage } from './CarouselPage/CarouselPage';
+import { CarouselContext } from './CarouselContext';
+
 import './carousel.scss'
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
-import { CarouselPage } from './CarouselPage/CarouselPage';
-import { CarouselContext } from './CarouselContecst';
 
 const Carousel = ({ data }) => {
      const [offset, setOffset] = useState(0)

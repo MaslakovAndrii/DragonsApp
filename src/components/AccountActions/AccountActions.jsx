@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { VscAccount } from 'react-icons/vsc';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { removeUser } from '../../store/slices/userSlice';
+import { Link } from 'react-router-dom';
 import { FAVORITE_ROUTE } from '../../utils/const';
+
 import Modal from '../Modal/Modal'
 import Profile from '../Profile/Profile';
+
+import { VscAccount } from 'react-icons/vsc';
 import './AccountActions.scss'
 
 const AccountActions = () => {

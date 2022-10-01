@@ -1,6 +1,7 @@
 import React from 'react';
-import { BiError, BiLike } from 'react-icons/bi';
+
 import './Notification.scss'
+import { BiError, BiLike } from 'react-icons/bi';
 
 const Notification = ({ type, message, handleVisible }) => {
 
@@ -28,10 +29,6 @@ const Notification = ({ type, message, handleVisible }) => {
 
           default: return
      }
-
-
-
-
 };
 
 export default Notification;

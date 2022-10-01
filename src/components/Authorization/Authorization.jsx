@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { REGISTRATION_ROUTE, START_ROUTE } from '../../utils/const';
 import { setUser } from '../../store/slices/userSlice';
+import {  Navigate, useNavigate } from 'react-router-dom';
+import { START_ROUTE } from '../../utils/const';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useForm } from 'react-hook-form';
 import { useAuth } from '../../hooks/useAuth';
+
 import Notification from '../../components/Notification/Notification';
 
 
@@ -23,7 +24,7 @@ const Authorization = () => {
           mode: 'onChange',
      })
 
-     const onSubmit = (data, e) => {
+     const onSubmit = (data) => {
           const auth = getAuth();
           signInWithEmailAndPassword(auth, data.email, data.password)
                .then(({ user }) => {
@@ -35,12 +36,9 @@ const Authorization = () => {
                     navigate(`${START_ROUTE}`)
                     reset()
                })
-               .catch((error) => {
+               .catch(() => {
                     setNotification({ type: 'error', message: 'Неправильный email или пароль. Попробуйте снова!' })
                });
-     }
-     const onError = (errors, e) => {
-          console.log('error');
      }
 
 
@@ -51,7 +49,7 @@ const Authorization = () => {
                <>
                     {notification ? <Notification type={notification.type} message={notification.message} handleVisible={setNotification} /> : null}
 
-                    <form className='form' noValidate onSubmit={handleSubmit(onSubmit, onError)} >
+                    <form className='form' noValidate onSubmit={handleSubmit(onSubmit)} >
                          <div className='form__input-wrapper'>
                               <input
                                    className='form__input'

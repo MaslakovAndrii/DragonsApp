@@ -10,18 +10,5 @@ const rootReducer = combineReducers({
 const store = configureStore({
      reducer: rootReducer
 })
-// const store = configureStore({
-//      reducer: {
-//           user: userReducer,
-//           favorite: favoriteReducer,
-//      },
-// })
-
-// {
-//      reducer: {
-//           user: userReducer,
-//           favorite: favoriteReducer,
-//      },
-// }
 
 export default store;

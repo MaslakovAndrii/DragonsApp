@@ -1,11 +1,11 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Container from '../Container/Container'
+import axios from 'axios';
+
 import Loader from '../Loader/Loader';
 import Pagination from '../Pagination/Pagination';
-import './DragonList.scss'
 import CardDragon from '../CardDragon/CardDragon';
+
+import './DragonList.scss'
 
 const DragonsList = () => {
      const [data, setData] = useState()

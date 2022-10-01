@@ -1,6 +1,7 @@
 import React from 'react';
-import { FiLoader } from 'react-icons/fi';
+
 import './Loader.scss'
+import { FiLoader } from 'react-icons/fi';
 
 const Loader = () => {
      return (

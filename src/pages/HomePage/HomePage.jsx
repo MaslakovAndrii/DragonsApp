@@ -1,13 +1,13 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import Carousel from '../../components/Carousel/Carousel';
-import './HomePage.scss'
 import Loader from '../../components/Loader/Loader';
+
+import './HomePage.scss'
 
 const HomePage = () => {
      const [cash, setCash] = useState(JSON.parse(localStorage.getItem('data')))
-
-     //  TODO: создать сервис для астинхронных запросов
 
      useEffect(() => {
           axios.get('https://api.spacexdata.com/v4/dragons/5e9d058759b1ff74a7ad5f8f')
