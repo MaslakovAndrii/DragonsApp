@@ -25,6 +25,7 @@ function App() {
                               <Route path={LIST_ROUTE} element={<DragonsList />} />
                               <Route path={`${LIST_ROUTE}/:id`} element={<DragonItem />} />
                               <Route path={`${FAVORITE_ROUTE}`} element={<Favorite />} />
+                              <Route path={`${FAVORITE_ROUTE}/:id`} element={<DragonItem />} />
                               <Route path='*' element={<div>страница не найдена</div>} />
                          </Route>
                     </Routes>
