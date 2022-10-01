@@ -9,6 +9,7 @@
           max-width: 100px;
      }
      &__bottom {
+          pointer-events: none;
           padding: 10px;
           border-radius: 5px;
           position: absolute;
@@ -18,6 +19,7 @@
           background-color: #fff;
           transition: 0.4s;
           &_visible {
+               pointer-events: all;
                opacity: 1;
                transform: translateY(30%);
                display: flex;
@@ -41,7 +43,6 @@
      }
      @media (max-width: 768px) {
           &__bottom {
-               // position: relative;
                left: 0;
                transform: translateY(0);
                transform: translateX(-100%);
