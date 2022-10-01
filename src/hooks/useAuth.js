@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 export  function useAuth() {
-     const {email, token, id} = useSelector(state => state.user)
+     const {email, token, id, isAuth} = useSelector(state => state.user)
 
      return {
           isAdmin: email === 'web.work.mv@gmail.com',

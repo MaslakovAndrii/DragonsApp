@@ -31,7 +31,7 @@ const Authorization = () => {
                     dispatch(setUser({
                          email: user.email,
                          id: user.uid,
-                         token: user.accessToken
+                         token: user.accessToken,
                     }))
                     navigate(`${START_ROUTE}`)
                     reset()

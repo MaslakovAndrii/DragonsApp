@@ -10,7 +10,7 @@ const Profile = () => {
      const auth = getAuth();
      const user = auth.currentUser;
      const [rename, setRename] = useState(false)
-     const [name, setName] = useState(user.displayName)
+     const [name, setName] = useState(user.displayName)  
 
 
      const { register, handleSubmit } = useForm({
