@@ -10,12 +10,10 @@ const favoriteSlice = createSlice({
                     state.push(action.payload)
                }
           },
-          // removeFavorite(state, action) {
-          //      const current = state.findIndex((item) => {
-          //           // item === action.payload
-          //      })
-          //      state = [...state.slice(0, current), ...state(current + 1, state.length)]
-          // } 
+          removeFavorite(state, action) {
+               const current = state.findIndex((item) => item === action.payload)
+               state.splice(current, 1)
+          } 
      }
 });
 

@@ -40,18 +40,16 @@ const DragonsList = () => {
 
      return (
           <div className='dragon-list'>
-               {/* <Container size='max'> */}
                     <div className='dragon-list__inner'>
                          <div className='dragon-list__content'>
                               <ul className='dragon-list__list list-dragon'>
-                                   {data.docs.map(dragon => (
-                                        <CardDragon key={dragon.id} id={dragon.id} image={dragon.flickr_images[0]} name={dragon.name} description={dragon.description}/>
-                                   ))}
+                                        {data.docs.map(dragon => (
+                                             <CardDragon key={dragon.id} data={dragon} typeButton='favorite'/>
+                                        ))}
                               </ul>
                          </div>
                          <Pagination pages={data.totalPages} handlePage={handlePage} pageActive={data.page} />
                     </div>
-               {/* </Container> */}
           </div>
      );
 };
