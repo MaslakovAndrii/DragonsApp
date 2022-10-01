@@ -47,7 +47,7 @@ const CardDragon = ({ data, typeButton }) => {
                     <h4 className='card-dragon__title'>{data.name}</h4>
                     <p className='card-dragon__description'>{data.description}</p>
                </Link>
-               {Button}
+                    {Button}
           </article>
      );
 };
