@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { removeUser } from '../../store/slices/userSlice';
-import { Link } from 'react-router-dom';
-import { FAVORITE_ROUTE } from '../../utils/const';
+import { Link, useNavigate } from 'react-router-dom';
+import { AUTHORIZATION_ROUTE, FAVORITE_ROUTE } from '../../utils/const';
 
+import { UserAuth } from '../../context/AuthContext';
 import Modal from '../Modal/Modal'
 import Profile from '../Profile/Profile';
 
@@ -13,14 +12,25 @@ import './AccountActions.scss'
 const AccountActions = () => {
      const [visibleBottom, setVisibleBottom] = useState(false)
      const [modalActive, setModalActive] = useState(false)
-     const dispatch = useDispatch()
+     const navigate = useNavigate()
+     const { logout } = UserAuth()
 
+     
      const handleProfile = () => {
           if (!visibleBottom) {
                setVisibleBottom(true)
 
           } else {
                setVisibleBottom(false)
+          }
+     }
+
+     const handleLogout = async () => {
+          try {
+               await logout()
+               navigate(AUTHORIZATION_ROUTE)
+          } catch (e) {
+               console.log(e);
           }
      }
 
@@ -38,7 +48,7 @@ const AccountActions = () => {
                               <Link className='list-profile__link link' to={FAVORITE_ROUTE}>Favorite</Link>
                          </li>
                     </ul>
-                    <button className='header__logout logout btn' onClick={() => dispatch(removeUser())}>Выйти</button>
+                    <button className='header__logout logout btn' onClick={handleLogout}>Выйти</button>
                </div>
                <Modal active={modalActive} setActive={setModalActive}>
                     <Profile/>

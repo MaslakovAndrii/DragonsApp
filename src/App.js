@@ -13,22 +13,27 @@ import DragonItem from './components/DragonItem/DragonItem';
 import Favorite from './components/Favorite/Favorite';
 
 import './App.scss';
+import { AuthContextProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
+
      return (
           <HashRouter>
-               <Routes>
-                    <Route path={AUTHORIZATION_ROUTE} element={<LoginPage />} />
-                    <Route path={REGISTRATION_ROUTE} element={<RegistrationPage />} />
-                    <Route path={START_ROUTE} element={<Layout />}>
-                         <Route index element={<HomePage />} />
-                         <Route path={LIST_ROUTE} element={<DragonsList />} />
-                         <Route path={`${LIST_ROUTE}/:id`} element={<DragonItem />} />
-                         <Route path={`${FAVORITE_ROUTE}`} element={<Favorite />} />
-                         <Route path={`${FAVORITE_ROUTE}/:id`} element={<DragonItem />} />
-                         <Route path='*' element={<div>страница не найдена</div>} />
-                    </Route>
-               </Routes>
+               <AuthContextProvider>
+                    <Routes>
+                         <Route path={AUTHORIZATION_ROUTE} element={<LoginPage />} />
+                         <Route path={REGISTRATION_ROUTE} element={<RegistrationPage />} />
+                         <Route path={START_ROUTE} element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+                              <Route index element={<HomePage />} />
+                              <Route path={LIST_ROUTE} element={<DragonsList />} />
+                              <Route path={`${LIST_ROUTE}/:id`} element={<DragonItem />} />
+                              <Route path={`${FAVORITE_ROUTE}`} element={<Favorite />} />
+                              <Route path={`${FAVORITE_ROUTE}/:id`} element={<DragonItem />} />
+                              <Route path='*' element={<div>страница не найдена</div>} />
+                         </Route>
+                    </Routes>
+               </AuthContextProvider>
           </HashRouter>
      );
 }
