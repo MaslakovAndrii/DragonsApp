@@ -1,41 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
-
-// import Notification from '../../components/Notification/Notification';
+import { auth } from '../../firebase';
+import { UserAuth } from '../../context/AuthContext';
+import { useNotification } from '../../context/NotificationContext';
 
 import './Profile.scss'
 import { GrEdit } from 'react-icons/gr'
 import { MdOutlineDone } from 'react-icons/md'
-import { auth } from '../../firebase';
-import { UserAuth } from '../../context/AuthContext';
 
 
 
 const Profile = () => {
-     const [rename, setRename] = useState(false)
      const { user } = UserAuth()
-     // const [notification, setNotification] = useState(false)
+     const [rename, setRename] = useState(false)
+     const dispatch_N = useNotification()
 
-
-     const { register, handleSubmit, formState: { errors} } = useForm({
+     const { register, handleSubmit, formState: { errors } } = useForm({
           defaultValues: {
                name: user.displayName,
           },
           mode: 'onChange'
      })
 
+
      const onSubmit = (data) => {
           if (data.name) {
                updateProfile(auth.currentUser, {
                     displayName: data.name
                })
-                    .then(() => {
-                         // setNotification({ type: 'successful', message: 'Вы упешно поменяли имя' })
+               try {
+                    dispatch_N({
+                         type: 'SHOW_NOTIFICATION',
+                         payload: {
+                              type: 'successful',
+                              message: `Renaming done. `
+                         }
                     })
-                    .catch(() => {
-                         // setNotification({ type: 'error', message: 'Не удалось сохранить имя пользователя.' })
+
+               } catch (err) {
+                    dispatch_N({
+                         type: 'SHOW_NOTIFICATION',
+                         payload: {
+                              type: 'successful',
+                              message: `${err}`
+                         }
                     })
+               }
                setRename(false)
           }
      }
