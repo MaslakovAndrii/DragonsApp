@@ -10,8 +10,12 @@
      margin: 5px;
      border-radius: 5px;
      box-shadow: 1px 6px 12px 8px rgba(34, 60, 80, 0.2);
-     opacity: 0;
-     top: -100%;
+     opacity: 1;
+     position: fixed;
+     top: 10%;
+     left: 50%;
+     transform: translateX(-50%);
+     z-index: 100;  
      transition: 0.5s all;
      &__icon {
           flex: 0 0 50px;
@@ -24,15 +28,14 @@
           color: #fff;
           font-weight: bold;
      }
+     &.exit {
+          opacity: 0;
+     }
 }
 
 .notification.error {
-     top: 5%;
-     opacity: 1;
      background-color: #e53935;
 }
 .notification.successful {
-     top: 5%;
-     opacity: 1;
      background-color: #9ccc65;
 }

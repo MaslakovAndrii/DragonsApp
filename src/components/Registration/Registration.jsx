@@ -1,15 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AUTHORIZATION_ROUTE} from '../../utils/const';
+import { AUTHORIZATION_ROUTE } from '../../utils/const';
 import { useForm } from 'react-hook-form';
 
 
 import './Registration'
 import { UserAuth } from '../../context/AuthContext';
+import { useNotification } from '../../context/NotificationContext';
 
 const Registration = () => {
      const navigate = useNavigate()
      const { createUser } = UserAuth()
+     const dispatch_N = useNotification()
 
 
      const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
@@ -23,9 +25,20 @@ const Registration = () => {
 
 
      const onSubmit = async (data) => {
-          await createUser(data.email, data.password)
-          navigate(AUTHORIZATION_ROUTE)
-          reset()
+          try {
+               await createUser(data.email, data.password)
+               navigate(AUTHORIZATION_ROUTE)
+               reset()
+          } catch (err) {
+               dispatch_N({
+                    type: 'SHOW_NOTIFICATION',
+                    payload: {
+                         type: 'error',
+                         message: `${err}`
+                    }
+               })
+          }
+          
      }
 
      return (

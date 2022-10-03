@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Carousel from '../../components/Carousel/Carousel';
 import Loader from '../../components/Loader/Loader';
+// import Notification from '../../components/Notification/Notification';
 
 import './HomePage.scss'
+import { NotificationContext } from '../../context/NotificationContext';
 
 const HomePage = () => {
      const [cash, setCash] = useState(JSON.parse(localStorage.getItem('data')))
-     
+
 
      useEffect(() => {
           axios.get('https://api.spacexdata.com/v4/dragons/5e9d058759b1ff74a7ad5f8f')
@@ -23,9 +25,9 @@ const HomePage = () => {
 
 
      if (!cash) {
-          return <Loader/>
+          return <Loader />
      }
-     
+
 
      return (
           <main className='main main-page'>

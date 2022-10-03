@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { START_ROUTE } from '../../utils/const';
 import { useForm } from 'react-hook-form';
 import { UserAuth } from '../../context/AuthContext';
+import { useNotification } from '../../context/NotificationContext'
 
 
 
 const Authorization = () => {
      const navigate = useNavigate()
+     const dispatch_N = useNotification()
+     const { singIn } = UserAuth()
 
      const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
           defaultValues: {
@@ -16,13 +19,23 @@ const Authorization = () => {
           },
           mode: 'onChange',
      })
-
-     const { singIn } = UserAuth()
+     
 
      const onSubmit = async (data) => {
-          await singIn(data.email, data.password)
-          navigate(START_ROUTE)
-          reset()
+          try {
+               await singIn(data.email, data.password)
+               navigate(START_ROUTE)
+               reset()
+          } catch (err) {
+               console.log(err);
+               dispatch_N({
+                    type: 'SHOW_NOTIFICATION',
+                    payload: {
+                         type: 'error',
+                         message: `${err}`
+                    }
+               })
+          }
      }
 
 
