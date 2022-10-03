@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import { auth } from '../../firebase';
@@ -69,11 +69,11 @@ const Profile = () => {
                                              type='name'
                                              {...register('name',
                                                   {
-                                                       required: 'Обязательное поле',
-                                                       maxLength: 30
+                                                       required: 'Required field',
+                                                       maxLength: { value: 30, message: "Maximum name length 30 characters"}
                                                   }
                                              )}
-                                             placeholder='Введите имя'
+                                             placeholder='Enter name'
                                         />
                                         {errors?.name && <div className='form__error'>{errors.name.message}</div>}
                                         <button type='submit' className='area-name__btn area-name__btn_done btn_null'>

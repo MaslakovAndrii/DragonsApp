@@ -10,7 +10,7 @@ const RegistrationPage = () => {
      return (
                <Container size='small'>
                     <div className='reg'>
-                         <h1 className='reg__title main-page-title'>Регистрация</h1>
+                         <h1 className='reg__title main-page-title'>Create account</h1>
                          <Registration />
                     </div>
                </Container>

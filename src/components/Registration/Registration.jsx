@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE } from '../../utils/const';
 import { useForm } from 'react-hook-form';
-
-
-import './Registration'
 import { UserAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
+
+
+import './Registration.scss'
 
 const Registration = () => {
      const navigate = useNavigate()
@@ -48,9 +48,9 @@ const Registration = () => {
                          className='form__input'
                          type='text'
                          {...register('name',
-                              { required: 'Обязательное поле' }
+                              { required: 'Required field' }
                          )}
-                         placeholder='Имя' />
+                         placeholder='Name' />
                     {errors?.name && <div className='form__error'>{errors.name.message}</div>}
                </div>
                <div className='form__input-wrapper'>
@@ -59,14 +59,14 @@ const Registration = () => {
                          type='email'
                          {...register('email',
                               {
-                                   required: 'Обязательное поле',
+                                   required: 'Required field',
                                    pattern: {
                                         value: /([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-                                        message: 'Введите правильный email'
+                                        message: 'Enter correct email'
                                    }
                               }
                          )}
-                         placeholder='Введите email' />
+                         placeholder='Enter email' />
                     {errors?.email && <div className='form__error'>{errors.email.message}</div>}
                </div>
                <div className='form__input-wrapper'>
@@ -75,17 +75,17 @@ const Registration = () => {
                          type='password'
                          {...register('password',
                               {
-                                   required: 'Обязательное поле',
+                                   required: 'Required field',
                                    minLength: {
                                         value: 6,
-                                        message: 'Пароль должен быть не менее 6 символов'
+                                        message: 'Password must be at least 6 characters'
                                    },
                               }
                          )}
-                         placeholder='Введите пароль' />
+                         placeholder='Enter password' />
                     {errors?.password && <div className='form__error'>{errors.password.message}</div>}
                </div>
-               <button className='form__btn btn' type='submit' disabled={!isValid} >Зарегистрироваться</button>
+               <button className='form__btn btn' type='submit' disabled={!isValid} >Sing up</button>
           </form>
 
      );

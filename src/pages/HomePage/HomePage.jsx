@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Carousel from '../../components/Carousel/Carousel';
 import Loader from '../../components/Loader/Loader';
-// import Notification from '../../components/Notification/Notification';
 
 import './HomePage.scss'
-import { NotificationContext } from '../../context/NotificationContext';
 
 const HomePage = () => {
      const [cash, setCash] = useState(JSON.parse(localStorage.getItem('data')))
@@ -33,10 +31,10 @@ const HomePage = () => {
           <main className='main main-page'>
                <div className='main-page__content'>
                     <h2 className='main-page__title'>{cash.name}</h2>
-                    <p className='main-page__text'>Первый полет: {cash.first_flight}</p>
-                    <p className='main-page__text'>Высота: {cash.height_w_trunk.meters} м</p>
+                    <p className='main-page__text'>First flight: {cash.first_flight}</p>
+                    <p className='main-page__text'>Height: {cash.height_w_trunk.meters} м</p>
                     <p className='main-page__text'>{cash.description}</p>
-                    <a className='main-page__link link' href={cash.wikipedia} target="blank">Википедия</a>
+                    <a className='main-page__link link' href={cash.wikipedia} target="blank">Wikipedia</a>
                </div>
                <div className='main-page__carousel'>
                     <Carousel data={cash.flickr_images} />

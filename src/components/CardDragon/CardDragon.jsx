@@ -45,7 +45,7 @@ const CardDragon = ({ data, typeButton }) => {
      return (
           <article className='card-dragon'>
                <Link to={`${data.id}`} className='card-dragon__link link' >
-                    <div className='card-dragon__img-container'><img className='card-dragon__img' src={data.flickr_images[0]} alt='картинки нет' /></div>
+                    <div className='card-dragon__img-container'><img className='card-dragon__img' src={data.flickr_images[0]} alt='no image' /></div>
                     <h4 className='card-dragon__title'>{data.name}</h4>
                     <p className='card-dragon__description'>{data.description}</p>
                </Link>

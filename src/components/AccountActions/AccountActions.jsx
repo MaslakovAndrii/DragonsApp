@@ -48,7 +48,7 @@ const AccountActions = () => {
                               <Link className='list-profile__link link' to={FAVORITE_ROUTE}>Favorite</Link>
                          </li>
                     </ul>
-                    <button className='header__logout logout btn' onClick={handleLogout}>Выйти</button>
+                    <button className='header__logout logout btn' onClick={handleLogout}>Logout</button>
                </div>
                <Modal active={modalActive} setActive={setModalActive}>
                     <Profile/>
