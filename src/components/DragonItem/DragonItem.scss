@@ -58,6 +58,7 @@
      overflow-y: scroll;
      &__general {
           display: flex;
+          align-items: flex-start;
           flex-direction: column;
           row-gap: 10px;
           position: relative;
