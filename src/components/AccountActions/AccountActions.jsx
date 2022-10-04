@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AUTHORIZATION_ROUTE, FAVORITE_ROUTE } from '../../utils/const';
 
@@ -13,7 +13,7 @@ const AccountActions = () => {
      const [visibleBottom, setVisibleBottom] = useState(false)
      const [modalActive, setModalActive] = useState(false)
      const navigate = useNavigate()
-     const { logout } = UserAuth()
+     const { user, logout } = UserAuth()
 
      
      const handleProfile = () => {
@@ -35,17 +35,18 @@ const AccountActions = () => {
      }
 
      return (
-          <div className='profile'>
-               <div className='profile__top'>
-                    <button onClick={handleProfile} className='profile__btn btn_null'>
-                         <VscAccount className='profile__account-icon account-icon' />
+          <div className='account-actions'>
+               <div className='account-actions__top'>
+                    <h3 className='account-actions__user-name'>{user.displayName}</h3>
+                    <button onClick={handleProfile} className='account-actions__btn btn_null'>
+                         <VscAccount className='account-actions__account-icon account-icon' />
                     </button>
                </div>
-               <div className={`profile__bottom ${visibleBottom ? 'profile__bottom_visible' : ''}`}>
-                    <ul className='profile__list list-profile'>
-                         <li className='list-profile__item'><button onClick={() => setModalActive(true)} className='list-profile__btn btn_null'>Profile</button></li>
-                         <li className='list-profile__item'>
-                              <Link className='list-profile__link link' to={FAVORITE_ROUTE}>Favorite</Link>
+               <div className={`account-actions__bottom ${visibleBottom ? 'account-actions__bottom_visible' : ''}`}>
+                    <ul className='account-actions__list list-account-actions'>
+                         <li className='list-account-actions__item'><button onClick={() => setModalActive(true)} className='list-account-actions__btn btn_null'>Profile</button></li>
+                         <li className='list-account-actions__item'>
+                              <Link className='list-account-actions__link link' to={FAVORITE_ROUTE}>Favorite</Link>
                          </li>
                     </ul>
                     <button className='header__logout logout btn' onClick={handleLogout}>Logout</button>

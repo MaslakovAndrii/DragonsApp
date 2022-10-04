@@ -1,4 +1,4 @@
-.profile {
+.account-actions {
      width: 100%;
      height: 100%;
      position: relative;
@@ -6,7 +6,14 @@
      flex-direction: column;
      align-items: center;
      &__top {
-          max-width: 100px;
+          // max-width: 100px;
+          align-items: center;
+          display: flex;
+          column-gap: 20px;
+     }
+     &__user-name {
+          color: #01579b;
+
      }
      &__bottom {
           pointer-events: none;
@@ -36,27 +43,32 @@
 
      &__btn {
           padding: 0;
-          width: 30px;
-          height: 30px;
+          width: 35px;
+          height: 35px;
      }
      &__account-icon {
           color: #01579b;
      }
      @media (max-width: 768px) {
+          &__top {
+               flex-direction: column;
+               row-gap: 15px;
+          }
           &__bottom {
                left: 0;
-               transform: translateY(0);
                transform: translateX(-100%);
+               transform: translateY(5%);
                transition:  transform 0.3s;
                &_visible {
                     position: relative;
                     transform: translateX(0%);
+                    transform: translateY(5%);
                }
           }
      }
 }
 
-.list-profile {
+.list-account-actions {
      color: #01579b;
      display: flex;
      flex-direction: column;
