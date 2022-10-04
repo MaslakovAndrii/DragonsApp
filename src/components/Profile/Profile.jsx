@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
-import { auth } from '../../firebase';
 import { UserAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
 
@@ -10,9 +8,8 @@ import { GrEdit } from 'react-icons/gr'
 import { MdOutlineDone } from 'react-icons/md'
 
 
-
 const Profile = () => {
-     const { user } = UserAuth()
+     const {user, changeProfile } = UserAuth()
      const [rename, setRename] = useState(false)
      const dispatch_N = useNotification()
 
@@ -24,12 +21,10 @@ const Profile = () => {
      })
 
 
-     const onSubmit = (data) => {
+     const onSubmit = async (data) => {
           if (data.name) {
-               updateProfile(auth.currentUser, {
-                    displayName: data.name
-               })
                try {
+                    await changeProfile(data.name)
                     dispatch_N({
                          type: 'SHOW_NOTIFICATION',
                          payload: {
@@ -37,7 +32,8 @@ const Profile = () => {
                               message: `Renaming done. `
                          }
                     })
-
+                    
+                    setRename(false)
                } catch (err) {
                     dispatch_N({
                          type: 'SHOW_NOTIFICATION',
@@ -47,7 +43,6 @@ const Profile = () => {
                          }
                     })
                }
-               setRename(false)
           }
      }
 
@@ -70,9 +65,10 @@ const Profile = () => {
                                              {...register('name',
                                                   {
                                                        required: 'Required field',
-                                                       maxLength: { value: 30, message: "Maximum name length 30 characters"}
+                                                       maxLength: { value: 30, message: "Maximum name length 30 characters" }
                                                   }
                                              )}
+                                             // placeholder={user.displayName ? `${user.displayName}` : 'Enter name'}
                                              placeholder='Enter name'
                                         />
                                         {errors?.name && <div className='form__error'>{errors.name.message}</div>}

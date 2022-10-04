@@ -2,6 +2,7 @@
   "name": "mad-app-gang",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://maslakovandrii.github.io/DragonsApp/",
   "dependencies": {
     "@react-hook/resize-observer": "^1.2.6",
     "@reduxjs/toolkit": "^1.8.5",
@@ -10,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "firebase": "^9.10.0",
+    "gh-pages": "^4.0.0",
     "mongoose-aggregate-paginate-v2": "^1.0.6",
     "normalize": "^0.3.1",
     "react": "^18.2.0",
@@ -28,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [

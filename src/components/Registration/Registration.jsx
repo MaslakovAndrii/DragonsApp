@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AUTHORIZATION_ROUTE } from '../../utils/const';
+import { AUTHORIZATION_ROUTE, START_ROUTE } from '../../utils/const';
 import { useForm } from 'react-hook-form';
 import { UserAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
@@ -10,7 +10,7 @@ import './Registration.scss'
 
 const Registration = () => {
      const navigate = useNavigate()
-     const { createUser } = UserAuth()
+     const { createUser, changeProfile } = UserAuth()
      const dispatch_N = useNotification()
 
 
@@ -23,11 +23,14 @@ const Registration = () => {
           mode: 'onChange',
      })
 
+     
+
 
      const onSubmit = async (data) => {
           try {
                await createUser(data.email, data.password)
-               navigate(AUTHORIZATION_ROUTE)
+               await changeProfile(data.name)
+               navigate(START_ROUTE)
                reset()
           } catch (err) {
                dispatch_N({
