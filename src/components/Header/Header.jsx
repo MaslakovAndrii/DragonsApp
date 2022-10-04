@@ -26,7 +26,7 @@ const Header = () => {
 
      return (
           <header className='header'>
-               <img className='header__logo logo' src={Logo} onClick={() => navigate('/')} />
+               <img className='header__logo logo' src={Logo} onClick={() => navigate('/')} alt='logo'/>
                <div className={`header__body ${menuOpen ? 'menu-open' : ''}`}>
                     <nav className='header__menu menu'>
                          <ul className='menu__list'>

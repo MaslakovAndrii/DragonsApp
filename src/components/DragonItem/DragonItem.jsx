@@ -69,7 +69,7 @@ const DragonItem = () => {
                                              <p className='info-dragon__text text'>Dry Mass: {dragon[`dry_mass_${thisUnits.weight}`]}</p>
                                              <p className='info-dragon__text text'>Launch payload mass: {dragon.launch_payload_mass[thisUnits.weight]}</p>
                                              <p className='info-dragon__text text'>Return payload mass: {dragon.return_payload_mass[thisUnits.weight]}</p>
-                                             <a className='info-dragon__link link' href={`${dragon.wikipedia}`} target='_blank'>Wikipedia</a>
+                                             <a className='info-dragon__link link' href={`${dragon.wikipedia}`} rel="noopener noreferrer" target='_blank'>Wikipedia</a>
                                              <button className='info-dragon__btn btn' onClick={() => handleUnits()}>{thisUnits.length === 'meters' ? 'CI' : 'Imperials'}</button>
                                         </div>
                                         <p className='info-dragon__description'>{dragon.description}</p>

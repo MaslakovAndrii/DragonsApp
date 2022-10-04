@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AUTHORIZATION_ROUTE, START_ROUTE } from '../../utils/const';
+import { AUTHORIZATION_ROUTE } from '../../utils/const';
 import { useForm } from 'react-hook-form';
 import { UserAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
@@ -30,7 +30,7 @@ const Registration = () => {
           try {
                await createUser(data.email, data.password)
                await changeProfile(data.name)
-               navigate(START_ROUTE)
+               navigate(AUTHORIZATION_ROUTE)
                reset()
           } catch (err) {
                dispatch_N({

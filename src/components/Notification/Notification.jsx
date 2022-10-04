@@ -7,6 +7,7 @@ const Notification = ({ type, message, dispatch_N }) => {
      const [exit, setExit] = useState(false)
 
      // Один таймаут попадает на другой. Если будет время нужно разобраться почему.
+     // upd: добавил зависимость в useEffect и проблема вроде решилась.
 
      let timeout = setTimeout(() => {
           dispatch_N({
@@ -19,7 +20,7 @@ const Notification = ({ type, message, dispatch_N }) => {
                setExit(false)
                clearTimeout(timeout)
           }
-     }, [])
+     }, [timeout])
 
 
      switch (type) {
