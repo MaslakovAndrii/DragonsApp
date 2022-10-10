@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/DragonsApp/static/css/main.6caa9472.css",
-    "main.js": "/DragonsApp/static/js/main.01d57d10.js",
+    "main.css": "/DragonsApp/static/css/main.bb0f3fac.css",
+    "main.js": "/DragonsApp/static/js/main.bd7f0d69.js",
     "static/media/logo.png": "/DragonsApp/static/media/logo.a8ed4659169c1be24fbe.png",
     "index.html": "/DragonsApp/index.html",
-    "main.6caa9472.css.map": "/DragonsApp/static/css/main.6caa9472.css.map",
-    "main.01d57d10.js.map": "/DragonsApp/static/js/main.01d57d10.js.map"
+    "main.bb0f3fac.css.map": "/DragonsApp/static/css/main.bb0f3fac.css.map",
+    "main.bd7f0d69.js.map": "/DragonsApp/static/js/main.bd7f0d69.js.map"
   },
   "entrypoints": [
-    "static/css/main.6caa9472.css",
-    "static/js/main.01d57d10.js"
+    "static/css/main.bb0f3fac.css",
+    "static/js/main.bd7f0d69.js"
   ]
 }
