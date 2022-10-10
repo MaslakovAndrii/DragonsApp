@@ -30,7 +30,7 @@ const Header = () => {
                <div className={`header__body ${menuOpen ? 'menu-open' : ''}`}>
                     <nav className='header__menu menu'>
                          <ul className='menu__list'>
-                              <li className='menu__item'><NavLink className='link link_dark' to={LIST_ROUTE}>Lists of dragons</NavLink></li>
+                              <li className='menu__item'><NavLink className='menu__link link' to={LIST_ROUTE}>Lists of dragons</NavLink></li>
                          </ul>
                     </nav>
                     <div className='header__container-profile'>
